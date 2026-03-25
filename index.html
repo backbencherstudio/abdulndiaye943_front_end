@@ -13,7 +13,17 @@
         <a href="#" class="brand" aria-label="Community Organization Home">
           <img src="logo.png" alt="Community logo" class="brand-logo" />
         </a>
-        <nav class="main-nav">
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="mainNav"
+        >
+          ☰
+        </button>
+        <nav id="mainNav" class="main-nav">
           <button
             class="nav-link active"
             data-page="home"
@@ -31,13 +41,38 @@
             Projects
           </button>
           <button
+            class="nav-link"
+            data-page="resources"
+            data-en="Useful Links"
+            data-fr="Liens Utiles"
+          >
+            Useful Links
+          </button>
+          <button
             class="nav-link contact-link"
-            data-page="projects"
+            data-page="contact"
             data-scroll="contact"
             data-en="Contact"
             data-fr="Contact"
           >
             Contact
+          </button>
+          <button
+            class="nav-btn nav-btn-primary"
+            data-page="contact"
+            data-en="Contact"
+            data-fr="Contact"
+          >
+            Join Us
+          </button>
+          <button
+            class="btn btn-secondary"
+            data-page="about"
+            data-scroll="about"
+            data-en="about"
+            data-fr="about"
+          >
+            Learn More
           </button>
           <button id="langSwitch" class="lang-switch">FR</button>
         </nav>
@@ -75,6 +110,8 @@
         const app = document.getElementById("app");
         const langSwitch = document.getElementById("langSwitch");
         const footerText = document.getElementById("footerText");
+        const navToggle = document.getElementById("navToggle");
+        const siteHeader = document.querySelector(".site-header");
         let lang =
           localStorage.getItem("lang") ||
           ((navigator.language || "en").toLowerCase().startsWith("fr")
@@ -86,15 +123,15 @@
           en: {
             navHome: "Home",
             navProjects: "Projects",
+            navResources: "Useful Links",
             navContact: "Contact",
             heroTitle: "High Council of Burkinabè Abroad.",
-            heroText:
-              "We are a community organization committed to unity, service, youth empowerment, and cultural celebration across our community.",
+            heroText: "",
             heroPrimary: "Join Us",
             heroSecondary: "Learn More",
             aboutTitle: "About Us",
             aboutText:
-              "Our organization brings together dedicated members, families, and volunteers who believe in service, education, solidarity, and cultural pride. We create meaningful programs that strengthen community ties and support the next generation.",
+              "We are a community organization committed to unity, service, youth empowerment, and cultural celebration across our community.",
             membersTitle: "Meet Our Members",
             membersText:
               "A committed team of fourteen members leading outreach, events, youth initiatives, communications, logistics, and community engagement.",
@@ -193,15 +230,15 @@
           fr: {
             navHome: "Accueil",
             navProjects: "Projets",
+            navResources: "Liens Utiles",
             navContact: "Contact",
             heroTitle: "Haut Conseil des Burkinabè de l'extérieur .",
-            heroText:
-              "Nous sommes une organisation communautaire engagée pour l’unité, le service, la jeunesse et la valorisation culturelle au sein de notre communauté.",
+            heroText: "",
             heroPrimary: "Nous rejoindre",
             heroSecondary: "En savoir plus",
             aboutTitle: "À Propos",
             aboutText:
-              "Notre organisation rassemble des membres, des familles et des bénévoles engagés qui croient au service, à l’éducation, à la solidarité et à la fierté culturelle. Nous créons des programmes utiles qui renforcent les liens communautaires et soutiennent la nouvelle génération.",
+              "Nous sommes une organisation communautaire engagée pour l’unité, le service, la jeunesse et la valorisation culturelle au sein de notre communauté.",
             membersTitle: "Nos Membres",
             membersText:
               "Une équipe de quatorze membres engagés qui dirigent les actions de proximité, les événements, les initiatives jeunesse, la communication, la logistique et l’engagement communautaire.",
@@ -360,19 +397,9 @@
             
             <h1>${t.heroTitle}</h1>
             <p>${t.heroText}</p>
-            <div class="hero-actions">
-              <button class="btn btn-primary" data-page="projects" data-scroll="contact">${t.heroPrimary}</button>
-              <a href="#about" class="btn btn-secondary">${t.heroSecondary}</a>
-            </div>
+            
           </div>
-          <div class="hero-visual" aria-hidden="true">
-            <div class="hero-card">
-             
-              <div class="visual-circle circle-red"></div>
-              <div class="visual-circle circle-green"></div>
-              <div class="visual-circle circle-gold"></div>
-            </div>
-          </div>
+         
         </div>
       </section>
 
@@ -398,7 +425,6 @@
         </div>
       </section>
     `;
-          bindPageButtons();
         }
 
         function renderProjects(t) {
@@ -411,12 +437,16 @@
         </div>
       </section>
 
-      <section class="section">
-        <div class="shell">
+      <section class="section ">
+        <div class="shell projects-section">
           <div class="project-grid">${projectsCards(t)}</div>
         </div>
       </section>
+    `;
+        }
 
+        function renderResources(t) {
+          app.innerHTML = `
       <section class="page-banner resources-section">
         <div class="shell narrow-center">
             <span class="section-kicker">${t.resourcesKicker}</span>
@@ -428,6 +458,18 @@
        <section class="section">
         <div class="shell">
           <div class="resources-grid">${resourcesCards(t)}</div>
+        </div>
+      </section>
+    `;
+        }
+
+        function renderContact(t) {
+          app.innerHTML = `
+      <section class="page-banner">
+        <div class="shell narrow-center">
+          <span class="section-kicker">Get in Touch</span>
+          <h1>${t.contactTitle}</h1>
+          <p class="section-text">${t.contactText}</p>
         </div>
       </section>
 
@@ -457,55 +499,77 @@
         </div>
       </section>
     `;
-          bindPageButtons();
         }
 
         function updateNavLabels() {
           const t = translations[lang];
           document.querySelectorAll(".nav-link").forEach((btn) => {
             if (btn.dataset.page === "home") btn.textContent = t.navHome;
-            if (
-              btn.dataset.page === "projects" &&
-              !btn.classList.contains("contact-link")
-            )
+            if (btn.dataset.page === "projects")
               btn.textContent = t.navProjects;
-            if (btn.classList.contains("contact-link"))
-              btn.textContent = t.navContact;
+            if (btn.dataset.page === "resources")
+              btn.textContent = t.navResources;
+            if (btn.dataset.page === "contact") btn.textContent = t.navContact;
           });
           footerText.textContent = t.footer;
           langSwitch.textContent = lang === "en" ? "FR" : "EN";
           document.querySelectorAll(".nav-link").forEach((btn) => {
-            btn.classList.toggle(
-              "active",
-              btn.dataset.page === currentPage &&
-                !btn.classList.contains("contact-link"),
-            );
+            btn.classList.toggle("active", btn.dataset.page === currentPage);
           });
         }
 
         function render() {
           const t = translations[lang];
           if (currentPage === "projects") renderProjects(t);
+          else if (currentPage === "resources") renderResources(t);
+          else if (currentPage === "contact") renderContact(t);
           else renderHome(t);
           updateNavLabels();
         }
 
         function bindPageButtons() {
-          document.querySelectorAll("[data-page]").forEach((el) => {
-            el.addEventListener("click", function () {
-              currentPage = this.dataset.page;
-              render();
-              if (this.dataset.scroll === "contact") {
-                setTimeout(() => {
-                  const target = document.getElementById("contact");
-                  if (target) target.scrollIntoView({ behavior: "smooth" });
-                }, 0);
-              } else {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            });
+          if (bindPageButtons.isBound) return;
+
+          document.addEventListener("click", function (event) {
+            const el = event.target.closest("[data-page]");
+            if (!el) return;
+
+            const nextPage = el.dataset.page;
+            currentPage = nextPage === "about" ? "home" : nextPage;
+            render();
+
+            if (siteHeader.classList.contains("menu-open")) {
+              siteHeader.classList.remove("menu-open");
+              navToggle.setAttribute("aria-expanded", "false");
+              navToggle.textContent = "☰";
+            }
+
+            if (el.dataset.scroll) {
+              setTimeout(() => {
+                const target = document.getElementById(el.dataset.scroll);
+                if (target) target.scrollIntoView({ behavior: "smooth" });
+              }, 0);
+            } else {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
           });
+
+          bindPageButtons.isBound = true;
         }
+
+        navToggle.addEventListener("click", function () {
+          const isOpen = siteHeader.classList.toggle("menu-open");
+          navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          navToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 720 && siteHeader.classList.contains("menu-open")) {
+            siteHeader.classList.remove("menu-open");
+            navToggle.setAttribute("aria-expanded", "false");
+            navToggle.textContent = "☰";
+          }
+        });
 
         langSwitch.addEventListener("click", function () {
           lang = lang === "en" ? "fr" : "en";
@@ -513,6 +577,7 @@
           render();
         });
 
+        bindPageButtons();
         render();
       })();
     </script>

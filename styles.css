@@ -52,14 +52,14 @@ textarea {
   border-bottom: 1px solid var(--line);
 }
 .header-inner {
-  min-height: 80px;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 .brand-logo {
-  height: 58px;
+  height: 78px;
   width: auto;
 }
 .main-nav {
@@ -67,6 +67,19 @@ textarea {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: #222;
+  font-size: 1.25rem;
+  cursor: pointer;
 }
 .main-nav button {
   background: none;
@@ -131,29 +144,49 @@ textarea {
   flex-wrap: wrap;
   gap: 14px;
 }
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 29px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+.nav-btn-primary {
+  background: var(--brand-green) !important;
+  color: #fff !important;
+  transition: all 0.28s ease;
+}
+.nav-btn-primary:hover {
+  background: var(--brand-gold) !important;
+  color: #1d1d1d;
+}
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 50px;
-  padding: 0 22px;
+  padding: 0 22px !important;
   border-radius: 999px;
   font-weight: 700;
   border: none;
   cursor: pointer;
 }
 .btn-primary {
-  background: var(--brand-green);
-  color: #fff;
+  background: var(--brand-green) !important;
+  color: #fff !important;
 }
 .btn-primary:hover {
-  background: var(--brand-gold);
-  color: #1d1d1d;
+  background: var(--brand-gold) !important;
+  color: #1d1d1d !important;
 }
 .btn-secondary {
-  background: #fff;
-  border: 1px solid var(--line);
-  color: #222;
+  background: #fff !important;
+  border: 1px solid var(--line) !important;
+  color: #222 !important;
 }
 .hero-visual {
   display: flex;
@@ -305,6 +338,9 @@ textarea {
 .page-banner {
   padding: 72px 0 24px;
   background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+}
+.projects-section {
+  margin-bottom: 20px;
 }
 .project-grid {
   display: grid;
@@ -479,8 +515,8 @@ textarea {
   padding: 28px 0;
 }
 .footer-logo {
-  height: 60px;
-  width: 60px;
+  height: 100px;
+  width: 100px;
 }
 
 .footer-social-icon {
@@ -545,7 +581,42 @@ textarea {
   .header-inner {
     min-height: auto;
     padding: 16px 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+  }
+  .brand-logo {
+    height: 58px;
+  }
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+  .main-nav {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .site-header.menu-open .main-nav {
+    display: flex;
+  }
+  .main-nav button {
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .lang-switch {
+    width: 100%;
   }
   .hero-section,
   .section,
