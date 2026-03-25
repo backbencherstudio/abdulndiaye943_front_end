@@ -99,6 +99,10 @@
             membersText:
               "A committed team of fourteen members leading outreach, events, youth initiatives, communications, logistics, and community engagement.",
             projectsTitle: "Our Projects",
+            resourcesKicker: "Resources",
+            resourcesTitle: "Useful Links",
+            resourcesText:
+              "A one-page resource hub with real external links for community events, learning, public services, volunteering, arts and support services.",
             contactTitle: "Contact Us",
             contactText:
               "We would love to hear from you. Reach out to learn more about events, partnerships, volunteering, or community support.",
@@ -106,6 +110,7 @@
             email: "Email",
             message: "Message",
             send: "Send Message",
+            openResource: "Open resource",
             footer: "© 2026 H.C.B.E. All rights reserved.",
             roles: [
               "President",
@@ -140,6 +145,50 @@
                 text: "Celebrations, performances, and public gatherings that highlight heritage, unity, and shared identity.",
               },
             ],
+            resources: [
+              {
+                category: "Community Calendar",
+                title: "Seattle Center Event Calendar",
+                text: "See upcoming community and cultural events in Seattle Center’s official calendar.",
+                url: "https://www.seattlecenter.com/events/event-calendar",
+              },
+              {
+                category: "Library & Learning",
+                title: "Seattle Public Library",
+                text: "Access free books, classes, online resources, and programs through Seattle Public Library.",
+                url: "https://www.spl.org/",
+              },
+              {
+                category: "Library Card",
+                title: "Get an SPL Library Card",
+                text: "Apply online for a free Seattle Public Library card if you live, work, or study in Seattle.",
+                url: "https://www.spl.org/using-the-library/get-started/get-started-in-english/en-get-started-with-a-library-card",
+              },
+              {
+                category: "Benefits & Services",
+                title: "Washington Connection",
+                text: "Find and apply for Washington State benefits and services through the official portal.",
+                url: "https://www.washingtonconnection.org/",
+              },
+              {
+                category: "Health Resources",
+                title: "Public Health – Seattle & King County",
+                text: "Find public health centers, services, programs, and safety information for King County.",
+                url: "https://kingcounty.gov/en/dept/dph",
+              },
+              {
+                category: "Volunteer",
+                title: "VolunteerMatch Seattle",
+                text: "Browse local volunteer opportunities available in Seattle.",
+                url: "https://www.volunteermatch.org/search?l=Seattle%2C+WA%2C+USA",
+              },
+              {
+                category: "Community Help",
+                title: "WA 211",
+                text: "Find housing, food, utility, health, and other support services across Washington.",
+                url: "https://wa211.org/",
+              },
+            ],
           },
           fr: {
             navHome: "Accueil",
@@ -157,6 +206,10 @@
             membersText:
               "Une équipe de quatorze membres engagés qui dirigent les actions de proximité, les événements, les initiatives jeunesse, la communication, la logistique et l’engagement communautaire.",
             projectsTitle: "Nos Projets",
+            resourcesKicker: "Ressources",
+            resourcesTitle: "Liens Utiles",
+            resourcesText:
+              "Un espace de ressources avec des liens externes vers des événements communautaires, l’apprentissage, les services publics, le bénévolat, les arts et les services de soutien.",
             contactTitle: "Contactez-Nous",
             contactText:
               "Nous serions ravis d’avoir de vos nouvelles. Contactez-nous pour les événements, les partenariats, le bénévolat ou le soutien communautaire.",
@@ -164,6 +217,7 @@
             email: "E-mail",
             message: "Message",
             send: "Envoyer",
+            openResource: "Ouvrir la ressource",
             footer: "© 2026 Organisation Communautaire. Tous droits réservés.",
             roles: [
               "Président",
@@ -196,6 +250,50 @@
                 icon: "./icons/12431690.png",
                 title: "Événements Culturels",
                 text: "Célébrations, performances et rassemblements publics mettant en valeur l’héritage, l’unité et l’identité commune.",
+              },
+            ],
+            resources: [
+              {
+                category: "Calendrier Communautaire",
+                title: "Calendrier des événements de Seattle Center",
+                text: "Consultez les événements communautaires et culturels à venir dans le calendrier officiel de Seattle Center.",
+                url: "https://www.seattlecenter.com/events/event-calendar",
+              },
+              {
+                category: "Bibliothèque & Apprentissage",
+                title: "Bibliothèque publique de Seattle",
+                text: "Accédez gratuitement à des livres, des cours, des ressources en ligne et des programmes via la bibliothèque publique de Seattle.",
+                url: "https://www.spl.org/",
+              },
+              {
+                category: "Carte de Bibliothèque",
+                title: "Obtenir une carte SPL",
+                text: "Faites une demande en ligne pour une carte gratuite de la bibliothèque publique de Seattle si vous vivez, travaillez ou étudiez à Seattle.",
+                url: "https://www.spl.org/using-the-library/get-started/get-started-in-english/en-get-started-with-a-library-card",
+              },
+              {
+                category: "Avantages & Services",
+                title: "Washington Connection",
+                text: "Trouvez et demandez les avantages et services de l’État de Washington via le portail officiel.",
+                url: "https://www.washingtonconnection.org/",
+              },
+              {
+                category: "Ressources Santé",
+                title: "Santé publique – Seattle & King County",
+                text: "Trouvez les centres de santé publique, services, programmes et informations de sécurité pour King County.",
+                url: "https://kingcounty.gov/en/dept/dph",
+              },
+              {
+                category: "Bénévolat",
+                title: "VolunteerMatch Seattle",
+                text: "Parcourez les opportunités de bénévolat disponibles à Seattle.",
+                url: "https://www.volunteermatch.org/search?l=Seattle%2C+WA%2C+USA",
+              },
+              {
+                category: "Aide Communautaire",
+                title: "WA 211",
+                text: "Trouvez des services de logement, alimentation, factures, santé et autres soutiens partout dans l’État de Washington.",
+                url: "https://wa211.org/",
               },
             ],
           },
@@ -236,6 +334,24 @@
             .join("");
         }
 
+        function resourcesCards(t) {
+          return t.resources
+            .map(
+              (resource) => `
+      <article class="resource-card">
+        <div>
+          <p class="resource-category">${resource.category}</p>
+          <h3>${resource.title}</h3>
+          <p class="resource-description">${resource.text}</p>
+          </div>
+          <a class="resource-link" href="${resource.url}" target="_blank" rel="noopener noreferrer">${t.openResource}</a>
+
+      </article>
+    `,
+            )
+            .join("");
+        }
+
         function renderHome(t) {
           app.innerHTML = `
       <section class="hero-section">
@@ -251,7 +367,7 @@
           </div>
           <div class="hero-visual" aria-hidden="true">
             <div class="hero-card">
-              <div class="stat-pill"><img src="icons/member.png" class="hero-stat-icon" alt="Members" /> </div>
+             
               <div class="visual-circle circle-red"></div>
               <div class="visual-circle circle-green"></div>
               <div class="visual-circle circle-gold"></div>
@@ -298,6 +414,17 @@
       <section class="section">
         <div class="shell">
           <div class="project-grid">${projectsCards(t)}</div>
+        </div>
+      </section>
+
+      <section class="section resources-section">
+        <div class="shell">
+          <div class="resources-head">
+            <span class="section-kicker">${t.resourcesKicker}</span>
+            <h2>${t.resourcesTitle}</h2>
+            <p class="section-text left-text">${t.resourcesText}</p>
+          </div>
+          <div class="resources-grid">${resourcesCards(t)}</div>
         </div>
       </section>
 
