@@ -392,12 +392,11 @@
         function renderHome(t) {
           app.innerHTML = `
       <section class="hero-section">
-        <div class="shell hero-grid">
+        <div class="shell ">
           <div class="hero-copy">
             
             <h1>${t.heroTitle}</h1>
-            <p>${t.heroText}</p>
-            
+         
           </div>
          
         </div>
@@ -564,7 +563,10 @@
         });
 
         window.addEventListener("resize", function () {
-          if (window.innerWidth > 720 && siteHeader.classList.contains("menu-open")) {
+          if (
+            window.innerWidth > 720 &&
+            siteHeader.classList.contains("menu-open")
+          ) {
             siteHeader.classList.remove("menu-open");
             navToggle.setAttribute("aria-expanded", "false");
             navToggle.textContent = "☰";
