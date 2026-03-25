@@ -579,7 +579,7 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 720px) {
+@media (max-width: 1020px) {
   .header-inner {
     min-height: auto;
     padding: 16px 0;
