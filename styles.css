@@ -48,16 +48,38 @@ textarea {
 .site-header {
   position: sticky;
   top: 0;
+
   z-index: 50;
   background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid var(--line);
 }
+
 .header-inner {
   min-height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+}
+.header-inner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: -8px;
+  height: 8px;
+  background: var(--brand-red);
+}
+.header-inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: -16px;
+  height: 8px;
+  background: var(--brand-green);
 }
 .brand-logo {
   height: 84px;
