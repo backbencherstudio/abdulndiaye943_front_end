@@ -71,6 +71,7 @@ textarea {
   height: 8px;
   background: var(--brand-red);
 }
+
 .header-inner::before {
   content: "";
   position: absolute;
