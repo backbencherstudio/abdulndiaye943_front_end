@@ -159,11 +159,17 @@ textarea {
 .contact-card label span {
   color: var(--muted);
 }
-.hero-copy p {
+.title-accent p {
   font-size: 1.08rem;
-  max-width: 60ch;
-  margin: 0 0 30px;
+
+  margin: 10px 0 10px;
 }
+.hero-title {
+  padding-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;

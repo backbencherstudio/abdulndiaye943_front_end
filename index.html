@@ -127,8 +127,11 @@
             navProjects: "Projects",
             navResources: "Useful Links",
             navContact: "Contact",
-            heroTitle: "High Council of Burkinabè Abroad.",
-            heroText: "",
+            heroTitle:
+              "High Council of Burkinabe Abroad Zone F. WEST COAST of the U.S.A",
+            heroText: "Serving 12 states:",
+            heroStates:
+              "Arizona • California • Colorado • Hawaii • Idaho • Montana • Nevada • New Mexico • Oregon • Utah • Washington State • Wyoming",
             heroPrimary: "Join Us",
             heroSecondary: "Learn More",
             aboutTitle: "About Us",
@@ -152,20 +155,62 @@
             openResource: "Open resource",
             footer: "© 2026 H.C.B.E. All rights reserved.",
             roles: [
-              "President",
-              "Vice President",
-              "Secretary",
-              "Treasurer",
-              "Community Outreach Lead",
-              "Youth Coordinator",
-              "Public Relations Lead",
-              "Events Director",
-              "Volunteer Coordinator",
-              "Programs Manager",
-              "Family Support Lead",
-              "Cultural Affairs Lead",
-              "Logistics Coordinator",
-              "Media and Communications Lead",
+              {
+                role: "President",
+                name: "Mr. Ibrahim Coulibaly ",
+              },
+              {
+                role: "Vice President",
+                name: "Mr. Boukare Bance",
+              },
+              {
+                role: "Head of Communication and Mobilization",
+                name: "Mr. Lassane Bonkoungou",
+              },
+              {
+                role: "Information and Technology",
+                name: "Mr. Abdoulaye Ndiaye",
+              },
+              {
+                role: "Mr. Hassami Baga",
+                name: "Treasurer",
+              },
+              {
+                role: "Mr. Daouda Traore",
+                name: "Deputy Treasurer",
+              },
+              {
+                role: "Youth Representative",
+                name: "Mrs. Compaore Awa G",
+              },
+              {
+                role: "Deputy Youth Representative",
+                name: "Mr. Kader Bandaogo",
+              },
+              {
+                role: "Auditor ",
+                name: "Mr. Jacques Barro",
+              },
+              {
+                role: "Deputy Auditor",
+                name: " Mr. Ousseny Zerbo",
+              },
+              {
+                name: "Mr. Hassan Sawadogo",
+                role: "Information and Communication",
+              },
+              {
+                name: "Mrs. Kere Evariste",
+                role: "Rapporteur",
+              },
+              {
+                role: "Women's Representative",
+                name: "Mrs. Malo Justine Catherine",
+              },
+              {
+                role: "Deputy Women's Representative",
+                name: "Mrs. Marleine Flora Karanga",
+              },
             ],
             projects: [
               {
@@ -234,8 +279,11 @@
             navProjects: "Projets",
             navResources: "Liens Utiles",
             navContact: "Contact",
-            heroTitle: "Haut Conseil des Burkinabè de l'extérieur .",
-            heroText: "",
+            heroTitle:
+              "Haut Conseil des Burkinabe de l'exterieur Zone F. COTE OUEST des Etats-Unis",
+            heroText: "Au service de 12 Etats :",
+            heroStates:
+              "Arizona • Californie • Colorado • Hawaii • Idaho • Montana • Nevada • Nouveau-Mexique • Oregon • Utah • Etat de Washington • Wyoming",
             heroPrimary: "Nous rejoindre",
             heroSecondary: "En savoir plus",
             aboutTitle: "À Propos",
@@ -259,20 +307,62 @@
             openResource: "Ouvrir la ressource",
             footer: "© 2026 Organisation Communautaire. Tous droits réservés.",
             roles: [
-              "Président",
-              "Vice-Président",
-              "Secrétaire",
-              "Trésorier",
-              "Responsable Communautaire",
-              "Coordonnateur Jeunesse",
-              "Responsable Communication",
-              "Directeur des Événements",
-              "Coordonnateur des Bénévoles",
-              "Responsable des Programmes",
-              "Responsable du Soutien Familial",
-              "Responsable Culturel",
-              "Coordonnateur Logistique",
-              "Responsable Médias et Communication",
+              {
+                role: "Président",
+                name: "Mr. Ibrahim Coulibaly ",
+              },
+              {
+                role: "Vice-président",
+                name: "Mr. Boukare Bance",
+              },
+              {
+                role: "Responsable de la communication et de la mobilisation",
+                name: "Mr. Lassane Bonkoungou",
+              },
+              {
+                role: "Informatique et technologie",
+                name: "Mr. Abdoulaye Ndiaye",
+              },
+              {
+                role: "Trésorier",
+                name: "Mr. Hassami Baga",
+              },
+              {
+                role: "Trésorier adjoint",
+                name: "Mr. Daouda Traore",
+              },
+              {
+                role: "Représentante de la jeunesse",
+                name: "Mrs. Compaore Awa G",
+              },
+              {
+                role: "Représentant adjoint de la jeunesse",
+                name: "Mr. Kader Bandaogo",
+              },
+              {
+                role: "Auditeur",
+                name: "Mr. Jacques Barro",
+              },
+              {
+                role: "Auditeur adjoint",
+                name: " Mr. Ousseny Zerbo",
+              },
+              {
+                name: "Mr. Hassan Sawadogo",
+                role: "Information et communication",
+              },
+              {
+                name: "Mrs. Kere Evariste",
+                role: "Rapporteur",
+              },
+              {
+                role: "Représentante des femmes",
+                name: "Mrs. Malo Justine Catherine",
+              },
+              {
+                role: "Représentante adjointe des femmes",
+                name: "Mrs. Marleine Flora Karanga",
+              },
             ],
             projects: [
               {
@@ -351,8 +441,8 @@
         <div class="member-image-wrap">
           <img src="${member.image}" alt="${member.name}" class="member-image" />
         </div>
-        <h3>${member.name}</h3>
-        <p>${t.roles[index] || ""}</p>
+        <h3>${t.roles[index].name}</h3>
+        <p>${t.roles[index].role || ""}</p>
       </article>
     `,
             )
@@ -396,11 +486,13 @@
       <section class="hero-section">
         <div class="shell ">
           <div class="hero-copy">
-            
             <h1>${t.heroTitle}</h1>
-         
+            <div class="hero-title">
+            <h3>${t.heroText}</h3>
+            <p>${t.heroStates}</p>
+            </div>
+            
           </div>
-         
         </div>
       </section>
 
